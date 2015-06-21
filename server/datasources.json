@@ -1,0 +1,29 @@
+{
+  "db": {
+    "name": "db",
+    "connector": "memory"
+  },
+  "flightsXml": {
+    "name": "flightsXml",
+    "connector": "rest",
+    "debug": true,
+    "options": {
+      "headers": {
+        "accept": "text/xml",
+        "content-type": "text/xml"
+      },
+      "root": false
+    },
+    "operations": [
+      {
+        "template": {
+          "method": "GET",
+          "url": "http://www2.iom-airport.com/{!direction}.xml"
+        },
+        "functions": {
+          "find": ["direction"]
+        }
+      }
+    ]
+  }
+}
